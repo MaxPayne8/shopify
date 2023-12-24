@@ -6,6 +6,12 @@ import ProductCard from "./ProductCard";
 import Spinner from "./Spinner";
 
 const Browse = () => {
+  function disableBackButton() {
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, "", window.location.href);
+    };
+  }
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [prodData, setProdData] = useState(null);
@@ -37,6 +43,7 @@ const Browse = () => {
 
   useEffect(() => {
     getAllProducts();
+    disableBackButton();
   }, []);
 
   const filterProducts = (e) => {
