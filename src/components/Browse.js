@@ -23,6 +23,7 @@ const Browse = () => {
   const token = localStorage.getItem("token");
   const fName = localStorage.getItem("firstname");
   const image = localStorage.getItem("image");
+  console.log(token);
   token ? <></> : navigate("/");
 
   const getAllProducts = async () => {

@@ -35,9 +35,11 @@ const Login = () => {
 
     const { token, firstName, image } = json;
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("firstname", firstName);
-    localStorage.setItem("image", image);
+    if (json?.token) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("firstname", firstName);
+      localStorage.setItem("image", image);
+    }
 
     dispatch(userData(firstName));
     dispatch(userData(image));
