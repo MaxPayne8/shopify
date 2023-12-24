@@ -46,7 +46,7 @@ const Login = () => {
 
     json?.id
       ? navigate("/browse")
-      : setErr("Kindly check your email/password ");
+      : setErr("Kindly check your username/password ");
   };
   return (
     <div className="w-full relative ">
