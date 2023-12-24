@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { ToastContainer, toast } from "react-toastify";
-import { addToken, showCart } from "../utils/slice";
+
+import { showCart } from "../utils/slice";
 
 const Login = () => {
   const passWord = useRef(null);
@@ -34,7 +34,7 @@ const Login = () => {
     console.log(json);
     const { token } = json;
     console.log(token);
-    // dispatch(addToken(token));
+
     localStorage.setItem("token", token);
 
     json?.id

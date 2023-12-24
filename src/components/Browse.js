@@ -14,11 +14,8 @@ const Browse = () => {
 
   const [searchTxt, setSearchTxt] = useState("");
 
-  //   const token = useSelector((store) => store.slice.token);
   const token = localStorage.getItem("token");
   token ? <></> : navigate("/");
-
-  //   console.log(token);
 
   const getAllProducts = async () => {
     const data = await fetch("https://dummyjson.com/products");
@@ -96,7 +93,7 @@ const Browse = () => {
           }}
         >
           <input
-            className="m-2 ml-10  p-1 pl-2 border-2 h-10 w-72 border-black rounded-lg"
+            className="m-2 ml-10  p-1 pl-2 border-2 h-10 w-60 sm:w-72 border-black rounded-lg"
             type="text"
             placeholder="Search Products,Brands,Categories..."
             onChange={(e) => {
@@ -133,7 +130,7 @@ const Browse = () => {
           className="m-2 hover:cursor-pointer  font-semibold p-1 border-2 text-white bg-blue-700 w-56 border-black rounded-lg h-auto hover:bg-orange-500 "
           onChange={(e) => filterProducts(e)}
         >
-          <option value="all"> All</option>
+          <option value="all"> Filter by Price</option>
           <option value="20"> Below Rs.20 </option>
           <option value="50"> Between Rs.20 - Rs.50</option>
           <option value="100"> Between Rs.50 Rs.100 </option>

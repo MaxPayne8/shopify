@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,20 +9,16 @@ import {
   removeCartItems,
 } from "../utils/slice";
 import { Link } from "react-router-dom";
-import Spinner from "./Spinner";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.slice);
   const { amount } = useSelector((store) => store.slice);
   const totalAmount = amount.reduce((e, acc) => e + acc, 0);
-  //   const [total, setTotal] = useState(null);
-
-  //   useEffect(() => setTotal(totalAmount), []);
 
   if (cartItems.length === 0)
     return (
-      <div className="flex justify-center  h-screen mt-48 px-4">
+      <div className="flex justify-center   mt-48 px-4">
         <Link to="/browse">
           <button className="   bg-slate-400 w-[300px] md:w-[400px]  rounded-lg border-2 border-black h-16 hover:bg-orange-500 font-semibold">
             Cart is Empty😥 , Add items now👻!!
@@ -62,6 +57,7 @@ const Cart = () => {
               thumbnail={prod.thumbnail}
               title={prod.title}
             />
+
             <button
               className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"
               onClick={() => {

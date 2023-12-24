@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
   initialState: {
-    token: null,
     allProd: null,
     cartItems: [],
     index: null,
@@ -10,9 +9,6 @@ const slice = createSlice({
   },
   name: "slice",
   reducers: {
-    addToken: (state, action) => {
-      state.token = action.payload;
-    },
     addAllProd: (state, action) => {
       state.allProd = action.payload;
     },
@@ -45,7 +41,6 @@ const slice = createSlice({
 });
 
 export const {
-  addToken,
   addAllProd,
   addCartItems,
   removeCartItems,
