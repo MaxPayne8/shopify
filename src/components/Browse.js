@@ -44,12 +44,6 @@ const Browse = () => {
     navigate("/");
   };
 
-  //   const { user } = useSelector((store) => store.slice);
-  //   console.log(user);
-  //   const fName = user[0];
-  //   const image = user[1];
-  //   console.log(fName, image);
-
   useEffect(() => {
     getAllProducts();
     disableBackButton();

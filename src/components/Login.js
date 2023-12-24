@@ -52,7 +52,7 @@ const Login = () => {
     <div className="w-full relative ">
       <img
         className="h-screen w-full md:hidden "
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_thwYCriUtx1neL_YrwUGxakGR8TkhfN1kyqUGV-12JkO8A2f-f4ZioljGwS5JVTj78&usqp=CAU"
+        src="https://img.freepik.com/premium-photo/blue-wallpapers-that-will-make-your-desktop-look-dark-blue-wallpaper-blue-wallpaper-blue-wallpaper-wallpaper-backgrounds-iphone-wallpaper-wallpaper-backgrounds-wallpaper-backgrounds_635062-586.jpg"
         alt="movies-collage"
       ></img>
 
