@@ -58,24 +58,26 @@ const Cart = () => {
               title={prod.title}
             />
 
-            <button
-              className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"
-              onClick={() => {
-                dispatch(addCartItems(prod));
-                dispatch(addAmount(prod.price));
-              }}
-            >
-              Add+
-            </button>
-            <button
-              className="absolute bottom-2 rounded-lg left-2 w-16 bg-red-700 hover:h-8"
-              onClick={() => {
-                dispatch(removeCartItems(index));
-                dispatch(removeAmount(index));
-              }}
-            >
-              Remove-
-            </button>
+            <div className="flex">
+              <button
+                className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"
+                onClick={() => {
+                  dispatch(addCartItems(prod));
+                  dispatch(addAmount(prod.price));
+                }}
+              >
+                Add+
+              </button>
+              <button
+                className="absolute bottom-2 rounded-lg  left-52 md:left-2 w-16 bg-red-700 hover:h-8"
+                onClick={() => {
+                  dispatch(removeCartItems(index));
+                  dispatch(removeAmount(index));
+                }}
+              >
+                Remove-
+              </button>
+            </div>
           </div>
         ))}
       </div>

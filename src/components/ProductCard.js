@@ -15,7 +15,7 @@ const ProductCard = ({
   let [imgId, setImgId] = useState(0);
   const newDescription = description.substring(0, 40);
   return (
-    <div className=" flex flex-col relative text-left w-[300px]  sm:w-96 h-[450px] font-semibold  shadow-md shadow-slate-300 hover:shadow-xl hover:shadow-blue-600 bg-black text-slate-200 m-2 p-2 rounded-lg hover:cursor-pointer">
+    <div className=" flex flex-col relative text-left w-[350px] my-4 sm:w-96 h-[460px] font-semibold  shadow-md shadow-slate-300 hover:shadow-xl hover:shadow-blue-600 bg-black text-slate-200 m-2 p-2 rounded-lg hover:cursor-pointer">
       <h1 className="text-2xl">
         {brand}-{title} ({category})
       </h1>
