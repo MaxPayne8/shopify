@@ -21,8 +21,6 @@ const Browse = () => {
     const data = await fetch("https://dummyjson.com/products");
     const json = await data.json();
 
-    console.log(json);
-    console.log(json.products);
     setProdData(json.products);
     setHeroData(json.products);
     dispatch(showCart(true));
@@ -37,16 +35,12 @@ const Browse = () => {
     navigate("/");
   };
 
-  console.log(prodData);
-
   useEffect(() => {
     getAllProducts();
   }, []);
 
   const filterProducts = (e) => {
     const filterPrice = e.target.value;
-    console.log(filterPrice);
-    console.log(heroData);
 
     if (filterPrice === "all") {
       setProdData(heroData);

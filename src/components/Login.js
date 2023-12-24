@@ -31,9 +31,8 @@ const Login = () => {
       body: JSON.stringify({ username, password }),
     });
     const json = await data.json();
-    console.log(json);
+
     const { token } = json;
-    console.log(token);
 
     localStorage.setItem("token", token);
 

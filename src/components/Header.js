@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { cartItems } = useSelector((store) => store.slice);
   const token = localStorage.getItem("token");
-  console.log(cartItems);
+
   return (
     <div className="flex bg-slate-900 text-slate-200  w-full items-center justify-between h-14">
       <img
