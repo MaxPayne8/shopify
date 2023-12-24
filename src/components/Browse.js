@@ -108,7 +108,7 @@ const Browse = () => {
           <button
             className="m-2 ml-2 p-1 bg-blue-700 h-10  rounded-lg w-12 hover:bg-orange-500"
             onClick={() => {
-              const searchedProd = prodData.filter(
+              const searchedProd = heroData.filter(
                 (item) =>
                   item.title.toLowerCase().includes(searchTxt.toLowerCase()) ||
                   item.brand.toLowerCase().includes(searchTxt.toLowerCase()) ||
