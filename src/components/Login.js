@@ -34,8 +34,8 @@ const Login = () => {
     console.log(json);
     const { token } = json;
     console.log(token);
-    dispatch(addToken(token));
-    // localStorage.setItem("token", token);
+    // dispatch(addToken(token));
+    localStorage.setItem("token", token);
 
     json?.id
       ? navigate("/browse")

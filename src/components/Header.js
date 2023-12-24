@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { cartItems, cart } = useSelector((store) => store.slice);
+  const { cartItems } = useSelector((store) => store.slice);
+  const token = localStorage.getItem("token");
   console.log(cartItems);
   return (
     <div className="flex bg-slate-900 text-slate-200  w-full items-center justify-between h-14">
@@ -15,7 +16,7 @@ const Header = () => {
       <Link to="/browse">
         <h1 className="mr-4 hover:text-xl">Browse</h1>
       </Link>
-      {cart && (
+      {token && (
         <Link to="/cart">
           <h1 className="mr-4 hover:text-xl">Cart ({cartItems?.length})</h1>
         </Link>

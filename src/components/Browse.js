@@ -14,8 +14,8 @@ const Browse = () => {
 
   const [searchTxt, setSearchTxt] = useState("");
 
-  const token = useSelector((store) => store.slice.token);
-  //   const token = localStorage.getItem("token");
+  //   const token = useSelector((store) => store.slice.token);
+  const token = localStorage.getItem("token");
   token ? <></> : navigate("/");
 
   //   console.log(token);
@@ -33,6 +33,11 @@ const Browse = () => {
 
   const handleClickAll = () => {
     setProdData(heroData);
+  };
+
+  const handleSignout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   console.log(prodData);
@@ -138,6 +143,12 @@ const Browse = () => {
           <option value="1500"> Between Rs.1000 Rs.1500</option>
           <option value="2000"> Between Rs.1500 Rs.2000</option>
         </select>
+        <button
+          className="m-2  p-1 bg-blue-700 h-10 w-28 rounded-lg  hover:bg-orange-500"
+          onClick={() => handleSignout()}
+        >
+          Log Out
+        </button>
       </div>
       <div className="flex flex-wrap   justify-evenly">
         {!prodData?.length ? (

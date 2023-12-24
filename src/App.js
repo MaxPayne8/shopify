@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import Header from "./components/Header";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-import Protected from "./components/Protected";
 
 function App() {
   return (
