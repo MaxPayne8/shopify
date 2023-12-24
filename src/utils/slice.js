@@ -6,6 +6,7 @@ const slice = createSlice({
     index: null,
     cart: false,
     amount: [],
+    user: [],
   },
   name: "slice",
   reducers: {
@@ -37,6 +38,9 @@ const slice = createSlice({
     removeAllAmount: (state) => {
       state.amount.length = 0;
     },
+    userData: (state, action) => {
+      state.user.push(action.payload);
+    },
   },
 });
 
@@ -49,5 +53,6 @@ export const {
   addAmount,
   removeAmount,
   removeAllAmount,
+  userData,
 } = slice.actions;
 export default slice.reducer;

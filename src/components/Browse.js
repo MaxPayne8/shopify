@@ -21,6 +21,8 @@ const Browse = () => {
   const [searchTxt, setSearchTxt] = useState("");
 
   const token = localStorage.getItem("token");
+  const fName = localStorage.getItem("firstname");
+  const image = localStorage.getItem("image");
   token ? <></> : navigate("/");
 
   const getAllProducts = async () => {
@@ -40,6 +42,12 @@ const Browse = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+
+  //   const { user } = useSelector((store) => store.slice);
+  //   console.log(user);
+  //   const fName = user[0];
+  //   const image = user[1];
+  //   console.log(fName, image);
 
   useEffect(() => {
     getAllProducts();
@@ -147,6 +155,10 @@ const Browse = () => {
         >
           Log Out
         </button>
+      </div>
+      <div className="flex justify-center items-center">
+        <h1 className="text-white ml-4">Welcome, {fName}</h1>
+        <img className="w-20 h-20" src={image} alt="user-profile" />
       </div>
       <div className="flex flex-wrap   justify-evenly">
         {!prodData?.length ? (

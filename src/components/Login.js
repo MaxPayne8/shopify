@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { showCart } from "../utils/slice";
+import { showCart, userData } from "../utils/slice";
 
 const Login = () => {
   const passWord = useRef(null);
@@ -31,10 +31,16 @@ const Login = () => {
       body: JSON.stringify({ username, password }),
     });
     const json = await data.json();
+    console.log(json);
 
-    const { token } = json;
+    const { token, firstName, image } = json;
 
     localStorage.setItem("token", token);
+    localStorage.setItem("firstname", firstName);
+    localStorage.setItem("image", image);
+
+    dispatch(userData(firstName));
+    dispatch(userData(image));
 
     json?.id
       ? navigate("/browse")
