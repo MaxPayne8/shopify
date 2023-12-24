@@ -42,7 +42,7 @@ const ProductCard = ({
                 imgId < images.length - 1 ? setImgId(imgId + 1) : setImgId(0)
               }
             >
-              ➡
+              ➡▶
             </button>
             <button
               className="absolute top-20 left-0 w-16 bg-gradient-to-r from-black hover:from-blue-700"
@@ -50,7 +50,7 @@ const ProductCard = ({
                 imgId === 0 ? setImgId(images.length - 1) : setImgId(imgId - 1)
               }
             >
-              ⬅
+              ◀⬅
             </button>
           </div>
         ) : null}
