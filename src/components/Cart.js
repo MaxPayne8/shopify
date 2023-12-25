@@ -27,7 +27,7 @@ const Cart = () => {
       </div>
     );
   return (
-    <div>
+    <div className="bg-black">
       <div className="mx-auto text-center font-semibold rounded-lg   bg-slate-800 w-48 mt-6 p-4 text-slate-200">
         Total Amount : {totalAmount}
       </div>
@@ -81,6 +81,12 @@ const Cart = () => {
           </div>
         ))}
       </div>
+      <button
+        onClick={() => window.scrollTo(0, 0)}
+        className="px-3  flex justify-center  rounded-lg mx-auto  text-white bg-violet-700 font-semibold hover:bg-violet-900  mt-1"
+      >
+        TOP
+      </button>
     </div>
   );
 };
