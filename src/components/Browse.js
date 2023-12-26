@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { addAmount, addCartItems, showCart } from "../utils/slice";
+import {
+  addAmount,
+  addCartItems,
+  addTotalItems,
+  showCart,
+} from "../utils/slice";
 import ProductCard from "./ProductCard";
 import Spinner from "./Spinner";
 
@@ -34,7 +39,25 @@ const Browse = () => {
     setHeroData(json.products);
     dispatch(showCart(true));
   };
+  const [warning, setWarning] = useState(false);
+  const { cartItems } = useSelector((store) => store.slice);
 
+  const handleAdd = (prod) => {
+    const check = cartItems?.filter((item) => item.id === prod.id);
+    const check1 = check?.length;
+    if (!check1) {
+      dispatch(addCartItems(prod));
+
+      dispatch(addTotalItems(1));
+
+      dispatch(addAmount(prod.price));
+    } else {
+      setWarning(true);
+      setTimeout(() => {
+        setWarning(false);
+      }, 1000);
+    }
+  };
   const handleClickAll = () => {
     setProdData(heroData);
   };
@@ -90,6 +113,11 @@ const Browse = () => {
 
   return (
     <div className="bg-black">
+      {warning && (
+        <div className="fixed text-white  top-0 right-0 border-2 border-white z-20  rounded-lg p-2 bg-blue-600">
+          ➡➡ Item already in cart!!⬅⬅
+        </div>
+      )}
       <div className="pt-4 mb-2 ml-3 mr-3 md:justify-between  md:flex-row flex items-center flex-col ">
         <form
           className=" flex   "
@@ -175,13 +203,12 @@ const Browse = () => {
                 key={prod.id}
               />
               <button
-                className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"
+                className="absolute bottom-2 rounded-lg right-0 w-10 bg-blue-700 hover:h-8"
                 onClick={() => {
-                  dispatch(addCartItems(prod));
-                  dispatch(addAmount(prod.price));
+                  handleAdd(prod);
                 }}
               >
-                Add+
+                ➕
               </button>
             </div>
           ))

@@ -16,8 +16,8 @@ const ProductCard = ({
   let [imgId, setImgId] = useState(0);
   const newDescription = description.substring(0, 40);
   return (
-    <div className=" flex flex-col relative text-left w-[350px] my-4 sm:w-96 h-[460px] font-semibold  shadow-md shadow-slate-300 hover:shadow-xl hover:shadow-blue-600 bg-black text-slate-200 m-2 p-2 rounded-lg hover:cursor-pointer">
-      <h1 className="text-2xl">
+    <div className=" flex flex-col relative text-left w-[300px] my-4 sm:w-[300px] h-[410px] font-semibold  shadow-md shadow-slate-300 hover:shadow-xl hover:shadow-blue-600 bg-black text-slate-200 m-2 p-2 rounded-lg hover:cursor-pointer">
+      <h1 className="text-lg">
         {brand}-{title} ({category})
       </h1>
       <p className="py-1 text-slate-700">{newDescription}...</p>
@@ -28,16 +28,9 @@ const ProductCard = ({
       </div>
 
       <div className="relative">
-        {/* {
-          <img
-            className="rounded-lg w-96 h-56"
-            src={images[imgId]}
-            alt="prod-img"
-          />
-        } */}
         <div className="  overflow-hidden ">
           <div
-            className={`flex w-96 transition ease-out duration-400`}
+            className={`flex w-[300px] transition ease-out duration-400`}
             style={{
               transform: `translateX(-${imgId * 100}%)`,
             }}
@@ -45,7 +38,7 @@ const ProductCard = ({
             {reducedImgs.map((img, index) => (
               <img
                 key={index}
-                className="rounded-lg  min-w-96 h-56"
+                className="rounded-lg  min-w-[300px] h-56"
                 src={img}
                 alt="prod-img"
               />
@@ -71,8 +64,10 @@ const ProductCard = ({
           </div>
         ) : null}
       </div>
-      <h1 className="p-1 ">Rs.{price}</h1>
-      <h1 className="p-1 ">Discount-{discountPercentage}%</h1>
+      <div className="flex">
+        <h1 className="p-1 ">Rs.{price}</h1>
+        <h1 className="p-1 ">({discountPercentage}%Off)</h1>
+      </div>
     </div>
   );
 };

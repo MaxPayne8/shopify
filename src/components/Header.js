@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { cartItems } = useSelector((store) => store.slice);
+  const { totalItems } = useSelector((store) => store.slice);
+  const total = totalItems.reduce((items, acc) => items + acc, 0);
   const token = localStorage.getItem("token");
 
   return (
@@ -18,7 +19,7 @@ const Header = () => {
       </Link>
       {token && (
         <Link to="/cart">
-          <h1 className="mr-4 hover:text-xl">Cart ({cartItems?.length})</h1>
+          <h1 className="mr-4 hover:text-xl">Cart ({total})</h1>
         </Link>
       )}
     </div>

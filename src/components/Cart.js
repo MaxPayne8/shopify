@@ -1,12 +1,12 @@
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addAmount,
-  addCartItems,
+  addAmntIndex,
+  addAmountIndex,
+  addTotalItemsIndex,
   clearCart,
-  removeAllAmount,
   removeAmount,
-  removeCartItems,
+  removeItems,
 } from "../utils/slice";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,22 @@ const Cart = () => {
   const { cartItems } = useSelector((store) => store.slice);
   const { amount } = useSelector((store) => store.slice);
   const totalAmount = amount.reduce((e, acc) => e + acc, 0);
+  const handleAdd = (prod, index) => {
+    dispatch(addTotalItemsIndex(index));
+
+    dispatch(addAmntIndex(index));
+    dispatch(addAmountIndex(prod.price));
+  };
+
+  const remove = (prod, index) => {
+    dispatch(removeItems(index));
+    dispatch(addAmntIndex(index));
+    dispatch(removeAmount(prod.price));
+  };
+  const clear = (item) => {
+    dispatch(clearCart());
+  };
+  const itemsArr = useSelector((store) => store.slice.totalItems);
 
   if (cartItems.length === 0)
     return (
@@ -36,7 +52,6 @@ const Cart = () => {
           className="   bg-slate-400 w-[300px] md:w-[400px]  rounded-lg border-2 border-black h-16 hover:bg-red-700 font-semibold"
           onClick={() => {
             dispatch(clearCart());
-            dispatch(removeAllAmount());
           }}
         >
           Clear Cart
@@ -60,22 +75,19 @@ const Cart = () => {
 
             <div className="flex">
               <button
-                className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"
-                onClick={() => {
-                  dispatch(addCartItems(prod));
-                  dispatch(addAmount(prod.price));
-                }}
+                className="absolute bottom-1 rounded-lg right-2 w-10 bg-blue-700 hover:h-8"
+                onClick={() => handleAdd(prod, index)}
               >
-                Add+
+                ➕
               </button>
+              <span className="absolute h-6  rounded-lg border-black border-2 bottom-1 left-[42%] text-center w-10 bg-blue-500 text-white ">
+                {itemsArr[index]}
+              </span>
               <button
-                className="absolute bottom-2 rounded-lg  left-52 md:left-2 w-16 bg-red-700 hover:h-8"
-                onClick={() => {
-                  dispatch(removeCartItems(index));
-                  dispatch(removeAmount(index));
-                }}
+                className="absolute bottom-1 rounded-lg  left-2 w-10 bg-red-700 hover:h-8"
+                onClick={() => remove(prod, index)}
               >
-                Remove-
+                ➖
               </button>
             </div>
           </div>
