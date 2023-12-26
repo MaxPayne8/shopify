@@ -154,7 +154,7 @@ const Browse = () => {
       </div>
       <div className="flex justify-center items-center">
         <h1 className="text-white ml-4">Welcome, {fName}</h1>
-        <img className="w-20 h-20" src={image} alt="user-profile" />
+        <img className="w-20 h-20"  src={image} alt="user-profile" />
       </div>
       <div className="flex flex-wrap   justify-evenly">
         {!prodData?.length ? (
@@ -171,8 +171,8 @@ const Browse = () => {
                 price={prod.price}
                 rating={prod.rating}
                 stock={prod.stock}
-                thumbnail={prod.thumbnail}
                 title={prod.title}
+                key={prod.id}
               />
               <button
                 className="absolute bottom-2 rounded-lg right-2 w-16 bg-blue-700 hover:h-8"

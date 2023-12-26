@@ -54,8 +54,8 @@ const Cart = () => {
               price={prod.price}
               rating={prod.rating}
               stock={prod.stock}
-              thumbnail={prod.thumbnail}
               title={prod.title}
+              key={prod.id}
             />
 
             <div className="flex">

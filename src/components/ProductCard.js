@@ -9,9 +9,10 @@ const ProductCard = ({
   price,
   rating,
   stock,
-  thumbnail,
+
   title,
 }) => {
+  const reducedImgs = images.slice(0, 3);
   let [imgId, setImgId] = useState(0);
   const newDescription = description.substring(0, 40);
   return (
@@ -27,30 +28,45 @@ const ProductCard = ({
       </div>
 
       <div className="relative">
-        <img
-          className="rounded-lg w-96 h-56"
-          src={images[imgId]}
-          alt="prod-img"
-        />
+        {/* {
+          <img
+            className="rounded-lg w-96 h-56"
+            src={images[imgId]}
+            alt="prod-img"
+          />
+        } */}
+        <div className="  overflow-hidden ">
+          <div
+            className={`flex w-96 transition ease-out duration-400`}
+            style={{
+              transform: `translateX(-${imgId * 100}%)`,
+            }}
+          >
+            {reducedImgs.map((img, index) => (
+              <img
+                key={index}
+                className="rounded-lg  min-w-96 h-56"
+                src={img}
+                alt="prod-img"
+              />
+            ))}
+          </div>
+        </div>
 
         {images.length > 1 ? (
           <div>
             {" "}
             <button
               className="absolute top-20 right-0 w-16 bg-gradient-to-r from-black hover:from-blue-700 "
-              onClick={() =>
-                imgId < images.length - 1 ? setImgId(imgId + 1) : setImgId(0)
-              }
+              onClick={() => (imgId < 2 ? setImgId(imgId + 1) : setImgId(0))}
             >
-              ➡️
+              ➡
             </button>
             <button
               className="absolute top-20 left-0 w-16 bg-gradient-to-r from-black hover:from-blue-700"
-              onClick={() =>
-                imgId === 0 ? setImgId(images.length - 1) : setImgId(imgId - 1)
-              }
+              onClick={() => (imgId === 0 ? setImgId(2) : setImgId(imgId - 1))}
             >
-              ⬅️
+              ⬅
             </button>
           </div>
         ) : null}
