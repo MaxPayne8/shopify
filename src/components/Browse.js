@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import {
   addAmount,
   addCartItems,
+  addStock,
   addTotalItems,
   showCart,
 } from "../utils/slice";
@@ -47,6 +48,7 @@ const Browse = () => {
     const check1 = check?.length;
     if (!check1) {
       dispatch(addCartItems(prod));
+      dispatch(addStock(prod.stock));
 
       dispatch(addTotalItems(1));
 

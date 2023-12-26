@@ -9,6 +9,9 @@ const slice = createSlice({
     user: [],
     totalItems: [],
     amntIndex: null,
+    stock: [],
+    prodName: null,
+    showStock: false,
   },
   name: "slice",
   reducers: {
@@ -55,9 +58,22 @@ const slice = createSlice({
       if (state.totalItems[action.payload] === 1) {
         state.totalItems.splice(action.payload, 1);
         state.cartItems.splice(action.payload, 1);
+        state.stock.splice(action.payload, 1);
       } else {
         state.totalItems[action.payload]--;
       }
+    },
+    addStock: (state, action) => {
+      state.stock.push(action.payload);
+    },
+    addProdName: (state, action) => {
+      state.prodName = action.payload;
+    },
+    addShowStock: (state, action) => {
+      state.showStock = action.payload;
+    },
+    removeStock: (state) => {
+      state.stock.splice(state.amntIndex, 1);
     },
   },
 });
@@ -65,17 +81,21 @@ const slice = createSlice({
 export const {
   addAllProd,
   addCartItems,
-  removeCartItems,
+
   clearCart,
   showCart,
   addAmount,
   removeAmount,
-  removeAllAmount,
+
   userData,
   addTotalItems,
   addTotalItemsIndex,
   addAmntIndex,
   addAmountIndex,
   removeItems,
+  addStock,
+  addProdName,
+  addShowStock,
+  removeStock,
 } = slice.actions;
 export default slice.reducer;

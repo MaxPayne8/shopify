@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addAmntIndex,
   addAmountIndex,
+  addProdName,
+  addShowStock,
   addTotalItemsIndex,
   clearCart,
   removeAmount,
   removeItems,
+  
 } from "../utils/slice";
 import { Link } from "react-router-dom";
 
@@ -14,12 +17,21 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.slice);
   const { amount } = useSelector((store) => store.slice);
+  const { stock } = useSelector((store) => store.slice);
   const totalAmount = amount.reduce((e, acc) => e + acc, 0);
+  const { totalItems } = useSelector((store) => store.slice);
+  console.log(stock);
   const handleAdd = (prod, index) => {
-    dispatch(addTotalItemsIndex(index));
+    if (totalItems[index] < stock[index]) {
+      dispatch(addTotalItemsIndex(index));
 
-    dispatch(addAmntIndex(index));
-    dispatch(addAmountIndex(prod.price));
+      dispatch(addAmntIndex(index));
+      dispatch(addAmountIndex(prod.price));
+    } else {
+      dispatch(addProdName(prod.title));
+      dispatch(addShowStock(true));
+      setTimeout(() => dispatch(addShowStock(false)), 1000);
+    }
   };
 
   const remove = (prod, index) => {
@@ -27,9 +39,9 @@ const Cart = () => {
     dispatch(addAmntIndex(index));
     dispatch(removeAmount(prod.price));
   };
-  const clear = (item) => {
-    dispatch(clearCart());
-  };
+
+  const { prodName, showStock } = useSelector((store) => store.slice);
+
   const itemsArr = useSelector((store) => store.slice.totalItems);
 
   if (cartItems.length === 0)
@@ -44,6 +56,11 @@ const Cart = () => {
     );
   return (
     <div className="bg-black">
+      {showStock && (
+        <div className="fixed  text-white  top-0 right-0 border-2 border-white z-20  rounded-lg p-2 bg-blue-600">
+          {prodName}, Max Limit Reached
+        </div>
+      )}
       <div className="mx-auto text-center font-semibold rounded-lg   bg-slate-800 w-48 mt-6 p-4 text-slate-200">
         Total Amount : {totalAmount}
       </div>
