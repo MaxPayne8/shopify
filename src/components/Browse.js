@@ -138,12 +138,12 @@ const Browse = () => {
           <option value="all"> Filter by Price</option>
           <option value="20"> Below Rs.20 </option>
           <option value="50"> Between Rs.20 - Rs.50</option>
-          <option value="100"> Between Rs.50 Rs.100 </option>
-          <option value="200"> Between Rs.100 Rs.200</option>
-          <option value="500"> Between Rs.200 Rs.500</option>
-          <option value="1000"> Between Rs.500 Rs.1000</option>
-          <option value="1500"> Between Rs.1000 Rs.1500</option>
-          <option value="2000"> Between Rs.1500 Rs.2000</option>
+          <option value="100"> Between Rs.50 - Rs.100 </option>
+          <option value="200"> Between Rs.100 - Rs.200</option>
+          <option value="500"> Between Rs.200 - Rs.500</option>
+          <option value="1000"> Between Rs.500 - Rs.1000</option>
+          <option value="1500"> Between Rs.1000 - Rs.1500</option>
+          <option value="2000"> Between Rs.1500 - Rs.2000</option>
         </select>
         <button
           className="m-2  p-1 bg-blue-700 h-10 w-28 rounded-lg  hover:bg-orange-500"
@@ -154,7 +154,7 @@ const Browse = () => {
       </div>
       <div className="flex justify-center items-center">
         <h1 className="text-white ml-4">Welcome, {fName}</h1>
-        <img className="w-20 h-20"  src={image} alt="user-profile" />
+        <img className="w-20 h-20" src={image} alt="user-profile" />
       </div>
       <div className="flex flex-wrap   justify-evenly">
         {!prodData?.length ? (
