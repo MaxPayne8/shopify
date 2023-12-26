@@ -24,7 +24,9 @@ const ProductCard = ({
 
       <div className="flex justify-between">
         <h1 className="p-1">{rating}⭐</h1>
-        <h1 className="p-1">{stock} in Stock</h1>
+        <h1 className="p-1">
+          <span className="text-red-700">{stock}</span> in Stock
+        </h1>
       </div>
 
       <div className="relative">
