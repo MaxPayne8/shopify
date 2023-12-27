@@ -36,14 +36,14 @@ const Cart = () => {
       dispatch(addAmntIndex(index));
       dispatch(addAmountIndex(prod.price));
     } else {
-      setTimeout(() => showToastMessage(), 200);
+      showToastMessage();
     }
   };
 
   const showToastMessage = () => {
     toast.error(" Max Limit Reached", {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000,
+      autoClose: 500,
       hideProgressBar: true,
     });
   };

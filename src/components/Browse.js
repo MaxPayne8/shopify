@@ -54,7 +54,7 @@ const Browse = () => {
   const showToastMessage = () => {
     toast.info("Item already in cart !", {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000,
+      autoClose: 500,
       hideProgressBar: true,
     });
   };
