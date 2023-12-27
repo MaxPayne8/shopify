@@ -10,6 +10,8 @@ import {
 } from "../utils/slice";
 import ProductCard from "./ProductCard";
 import Spinner from "./Spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Browse = () => {
   function disableBackButton() {
@@ -18,6 +20,13 @@ const Browse = () => {
       window.history.pushState(null, "", window.location.href);
     };
   }
+  const showToastMessageWelcome = () => {
+    toast.info("Browse Items!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+      autoClose: 500,
+      hideProgressBar: true,
+    });
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [prodData, setProdData] = useState(null);
@@ -40,8 +49,15 @@ const Browse = () => {
     setHeroData(json.products);
     dispatch(showCart(true));
   };
-  const [warning, setWarning] = useState(false);
+  // const [warning, setWarning] = useState(false);
   const { cartItems } = useSelector((store) => store.slice);
+  const showToastMessage = () => {
+    toast.info("Item already in cart !", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000,
+      hideProgressBar: true,
+    });
+  };
 
   const handleAdd = (prod) => {
     const check = cartItems?.filter((item) => item.id === prod.id);
@@ -54,10 +70,11 @@ const Browse = () => {
 
       dispatch(addAmount(prod.price));
     } else {
-      setWarning(true);
-      setTimeout(() => {
-        setWarning(false);
-      }, 1000);
+      showToastMessage();
+      // setWarning(true);
+      // setTimeout(() => {
+      //   setWarning(false);
+      // }, 1000);
     }
   };
   const handleClickAll = () => {
@@ -72,6 +89,7 @@ const Browse = () => {
   useEffect(() => {
     getAllProducts();
     disableBackButton();
+    showToastMessageWelcome();
   }, []);
 
   const filterProducts = (e) => {
@@ -115,11 +133,12 @@ const Browse = () => {
 
   return (
     <div className="bg-black">
-      {warning && (
+      {/* {warning && (
         <div className="fixed text-white  top-0 right-0 border-2 border-white z-20  rounded-lg p-2 bg-blue-600">
           ➡➡ Item already in cart!!⬅⬅
         </div>
-      )}
+      )} */}
+      <ToastContainer />
       <div className="pt-4 mb-2 ml-3 mr-3 md:justify-between  md:flex-row flex items-center flex-col ">
         <form
           className=" flex   "

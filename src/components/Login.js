@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
 import { showCart, userData } from "../utils/slice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const passWord = useRef(null);
@@ -12,6 +14,13 @@ const Login = () => {
   const userName = useRef(null);
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
+  const showToastMessageWrong = () => {
+    toast.error("Wrong credentials!!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000,
+      hideProgressBar: true,
+    });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -47,9 +56,11 @@ const Login = () => {
     json?.id
       ? navigate("/browse")
       : setErr("Kindly check your username/password ");
+    showToastMessageWrong();
   };
   return (
     <div className="w-full relative ">
+      <ToastContainer />
       <img
         className="h-screen w-full md:hidden "
         src="https://img.freepik.com/premium-photo/blue-wallpapers-that-will-make-your-desktop-look-dark-blue-wallpaper-blue-wallpaper-blue-wallpaper-wallpaper-backgrounds-iphone-wallpaper-wallpaper-backgrounds-wallpaper-backgrounds_635062-586.jpg"

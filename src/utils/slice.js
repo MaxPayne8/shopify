@@ -67,9 +67,7 @@ const slice = createSlice({
     addStock: (state, action) => {
       state.stock.push(action.payload);
     },
-    addProdName: (state, action) => {
-      state.prodName = action.payload;
-    },
+
     addShowStock: (state, action) => {
       state.showStock = action.payload;
     },
@@ -95,7 +93,7 @@ export const {
   addAmountIndex,
   removeItems,
   addStock,
-  addProdName,
+
   addShowStock,
   removeStock,
 } = slice.actions;

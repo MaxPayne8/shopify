@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addAmntIndex,
   addAmountIndex,
-  addProdName,
-  addShowStock,
   addTotalItemsIndex,
   clearCart,
   removeAmount,
   removeItems,
 } from "../utils/slice";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -20,20 +20,6 @@ const Cart = () => {
   const totalAmount = amount.reduce((e, acc) => e + acc, 0);
   const { totalItems } = useSelector((store) => store.slice);
   console.log(stock);
-  const handleAdd = (prod, index) => {
-    if (totalItems[index] < stock[index]) {
-      dispatch(addTotalItemsIndex(index));
-
-      dispatch(addAmntIndex(index));
-      dispatch(addAmountIndex(prod.price));
-      console.log(totalItems);
-      console.log(stock);
-    } else {
-      dispatch(addProdName(prod.title));
-      dispatch(addShowStock(true));
-      setTimeout(() => dispatch(addShowStock(false)), 1000);
-    }
-  };
 
   const remove = (prod, index) => {
     dispatch(removeItems(index));
@@ -41,10 +27,26 @@ const Cart = () => {
     dispatch(removeAmount(prod.price));
   };
 
-  const { prodName, showStock } = useSelector((store) => store.slice);
-
   const itemsArr = useSelector((store) => store.slice.totalItems);
 
+  const handleAdd = (prod, index) => {
+    if (totalItems[index] < stock[index]) {
+      dispatch(addTotalItemsIndex(index));
+
+      dispatch(addAmntIndex(index));
+      dispatch(addAmountIndex(prod.price));
+    } else {
+      setTimeout(() => showToastMessage(), 200);
+    }
+  };
+
+  const showToastMessage = () => {
+    toast.error(" Max Limit Reached", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000,
+      hideProgressBar: true,
+    });
+  };
   if (cartItems.length === 0)
     return (
       <div className="flex justify-center   mt-48 px-4">
@@ -57,11 +59,7 @@ const Cart = () => {
     );
   return (
     <div className="bg-black">
-      {showStock && (
-        <div className="fixed  text-white  top-0 right-0 border-2 border-white z-20  rounded-lg p-2 bg-blue-600">
-          {prodName}, Max Limit Reached
-        </div>
-      )}
+      <ToastContainer />
       <div className="mx-auto text-center font-semibold rounded-lg   bg-slate-800 w-48 mt-6 p-4 text-slate-200">
         Total Amount : {totalAmount}
       </div>
