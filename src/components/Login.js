@@ -49,14 +49,26 @@ const Login = () => {
       localStorage.setItem("firstname", firstName);
       localStorage.setItem("image", image);
     }
+    const showToastMessageWelcome = () => {
+      toast.success("Login Sucessfull!!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 800,
+        hideProgressBar: true,
+      });
+    };
 
     dispatch(userData(firstName));
     dispatch(userData(image));
+    const handleLogin = () => {
+      setTimeout(() => navigate("/browse"), 1000);
 
-    json?.id
-      ? navigate("/browse")
-      : setErr("Kindly check your username/password ");
-    showToastMessageWrong();
+      showToastMessageWelcome();
+    };
+    const handleError = () => {
+      setErr("Kindly check your username/password ");
+      showToastMessageWrong();
+    };
+    json?.id ? handleLogin() : handleError();
   };
   return (
     <div className="w-full relative ">

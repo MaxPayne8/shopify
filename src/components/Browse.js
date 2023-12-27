@@ -20,13 +20,7 @@ const Browse = () => {
       window.history.pushState(null, "", window.location.href);
     };
   }
-  const showToastMessageWelcome = () => {
-    toast.info("Browse Items!!", {
-      position: toast.POSITION.BOTTOM_CENTER,
-      autoClose: 500,
-      hideProgressBar: true,
-    });
-  };
+ 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [prodData, setProdData] = useState(null);
@@ -89,7 +83,7 @@ const Browse = () => {
   useEffect(() => {
     getAllProducts();
     disableBackButton();
-    showToastMessageWelcome();
+    
   }, []);
 
   const filterProducts = (e) => {
