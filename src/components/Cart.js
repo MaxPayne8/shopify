@@ -9,7 +9,6 @@ import {
   clearCart,
   removeAmount,
   removeItems,
-  
 } from "../utils/slice";
 import { Link } from "react-router-dom";
 
@@ -27,6 +26,8 @@ const Cart = () => {
 
       dispatch(addAmntIndex(index));
       dispatch(addAmountIndex(prod.price));
+      console.log(totalItems);
+      console.log(stock);
     } else {
       dispatch(addProdName(prod.title));
       dispatch(addShowStock(true));

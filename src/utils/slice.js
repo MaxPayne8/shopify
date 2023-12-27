@@ -26,6 +26,7 @@ const slice = createSlice({
       state.cartItems.length = 0;
       state.amount.length = 0;
       state.totalItems.length = 0;
+      state.stock.length = 0;
     },
     showCart: (state, action) => {
       state.cart = action.payload;
