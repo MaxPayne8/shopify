@@ -91,7 +91,7 @@ const Cart = () => {
 
             <div className="flex">
               <button
-                className="absolute bottom-1 rounded-lg right-2 w-10 bg-blue-600 hover:bg-blue-700"
+                className="absolute bottom-1 rounded-lg right-2 w-10 bg-blue-700 hover:bg-blue-500"
                 onClick={() => handleAdd(prod, index)}
               >
                 ➕
@@ -100,7 +100,7 @@ const Cart = () => {
                 {itemsArr[index]}
               </span>
               <button
-                className="absolute bottom-1 rounded-lg  left-2 w-10 bg-red-600 hover:bg-red-700"
+                className="absolute bottom-1 rounded-lg  left-2 w-10 bg-red-700 hover:bg-red-500"
                 onClick={() => remove(prod, index)}
               >
                 ➖

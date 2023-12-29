@@ -217,7 +217,7 @@ const Browse = () => {
                 key={prod.id}
               />
               <button
-                className="absolute bottom-2 rounded-lg right-0 w-10 bg-blue-600 hover:bg-blue-700 "
+                className="absolute bottom-2 rounded-lg right-0 w-10 bg-blue-700 hover:bg-blue-500 "
                 onClick={() => {
                   handleAdd(prod);
                 }}
