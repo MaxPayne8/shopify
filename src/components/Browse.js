@@ -20,7 +20,7 @@ const Browse = () => {
       window.history.pushState(null, "", window.location.href);
     };
   }
- 
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [prodData, setProdData] = useState(null);
@@ -83,7 +83,6 @@ const Browse = () => {
   useEffect(() => {
     getAllProducts();
     disableBackButton();
-    
   }, []);
 
   const filterProducts = (e) => {
@@ -218,7 +217,7 @@ const Browse = () => {
                 key={prod.id}
               />
               <button
-                className="absolute bottom-2 rounded-lg right-0 w-10 bg-blue-700 hover:h-8"
+                className="absolute bottom-2 rounded-lg right-0 w-10 bg-blue-600 hover:bg-blue-600 "
                 onClick={() => {
                   handleAdd(prod);
                 }}
